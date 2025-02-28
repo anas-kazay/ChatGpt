@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FavoriteRequest {
     private Long conversationId;
-    private String note;
 
     public Long getConversationId() {
         return conversationId;
@@ -20,11 +19,5 @@ public class FavoriteRequest {
         this.conversationId = conversationId;
     }
 
-    public String getNote() {
-        return note;
-    }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
 }
