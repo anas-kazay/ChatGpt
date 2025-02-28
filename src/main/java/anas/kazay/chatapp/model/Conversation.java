@@ -2,7 +2,6 @@ package anas.kazay.chatapp.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,6 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Conversation {
 
     @Id
@@ -19,9 +19,15 @@ public class Conversation {
     private String userQuestion;
 
     @Column(columnDefinition = "TEXT")
-    private String gptResponse;
+    private String aiResponse;
 
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "model_id", nullable = false)
+    private Model model;
 
     private LocalDateTime timestamp = LocalDateTime.now();
 
@@ -41,20 +47,28 @@ public class Conversation {
         this.userQuestion = userQuestion;
     }
 
-    public String getGptResponse() {
-        return gptResponse;
+    public String getAiResponse() {
+        return aiResponse;
     }
 
-    public void setGptResponse(String gptResponse) {
-        this.gptResponse = gptResponse;
+    public void setAiResponse(String aiResponse) {
+        this.aiResponse = aiResponse;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     public LocalDateTime getTimestamp() {
