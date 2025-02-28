@@ -24,7 +24,6 @@ public class Favorite {
     @JoinColumn(name = "conversation_id", nullable = false)
     private Conversation conversation;
 
-    private String note;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -52,13 +51,7 @@ public class Favorite {
         this.conversation = conversation;
     }
 
-    public String getNote() {
-        return note;
-    }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

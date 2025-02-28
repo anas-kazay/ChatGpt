@@ -40,7 +40,6 @@ public class FavoriteService {
         Favorite favorite = new Favorite();
         favorite.setUser(user);
         favorite.setConversation(conversation);
-        favorite.setNote(request.getNote());
 
         return favoriteRepository.save(favorite);
     }
